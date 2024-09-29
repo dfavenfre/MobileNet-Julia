@@ -70,9 +70,27 @@ end
 
 Overall, MobileNet v1 strikes a balance between accuracy and efficiency, making it a powerful model for real-time applications on devices with limited computing power.
 
+# Training
+
+MobileNet v1 was trained for 11 uninterrupted hours on an NVIDIA GeForce RTX 3050 Ti CUDA-enabled GPU with 32 GB of available memory.
+
+## Training / Validation Loss:
+![Training and Validation Accuracy](https://github.com/user-attachments/assets/f2d35b0c-5a62-4220-af94-dadf46223cac)
+
+## Validation Accuracy:
+![Training and Validation Loss](https://github.com/user-attachments/assets/c0ce788c-7b1e-405c-ad62-e22cde2d5a6b)
 
 
+# Usage
+To clone the repository and install the dependencies, you can use the following commands:
 
+```bash
+git clone https://github.com/dfavenfre/MobileNet-Julia.git
+```
 
+Install required Julia packages:
 
-
+```Julia
+using Pkg
+Pkg.instantiate()
+```
