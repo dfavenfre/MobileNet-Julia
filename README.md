@@ -74,10 +74,10 @@ Overall, MobileNet v1 strikes a balance between accuracy and efficiency, making 
 
 MobileNet v1 was trained for 11 uninterrupted hours on an NVIDIA GeForce RTX 3050 Ti CUDA-enabled GPU with 32 GB of available memory.
 
-## Training / Validation Loss:
+## Validation Accuracy:
 ![Training and Validation Accuracy](https://github.com/user-attachments/assets/f2d35b0c-5a62-4220-af94-dadf46223cac)
 
-## Validation Accuracy:
+## Training / Validation Loss:
 ![Training and Validation Loss](https://github.com/user-attachments/assets/c0ce788c-7b1e-405c-ad62-e22cde2d5a6b)
 
 
