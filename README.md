@@ -1,11 +1,13 @@
 # MobileNet v1 Implementation in Julia - CIFAR100
 
-This repository contains a custom implementation of MobileNet v1 from the research paper [MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications](https://arxiv.org/abs/1704.04861) using Julia. The model was trained on the CIFAR100 dataset, and this repository includes both the implementation and the results of the training.
+This repository contains a custom implementation of MobileNet v1, based on the research paper [MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications](https://arxiv.org/abs/1704.04861), using the Julia (Flux). The model was trained on the CIFAR100 dataset, and you’ll find both the implementation and results documented here.
 
-# MobileNet v1 Overview
-MobileNet v1 is a class of efficient deep learning models designed for mobile and embedded vision applications. It leverages depthwise separable convolutions, which significantly reduce the number of parameters and computational cost, making the model suitable for devices with limited resources.
+## MobileNet v1 Overview
+MobileNet v1 is a lightweight and efficient deep learning model designed for mobile and embedded devices. It achieves a balance between performance and computational efficiency by using **depthwise separable convolutions**, which significantly reduce the number of parameters and computational overhead compared to standard convolutions.
 
 ## MobileNet v1 Architecture
+The core architecture leverages depthwise separable convolutions, as shown in the code below:
+
 ![image](https://github.com/user-attachments/assets/f5fa61c6-c273-4d83-bea7-68e6711ccecf)
 
 ```Julia
@@ -58,21 +60,19 @@ function MobileNet_V1(n_class; α=0.1)
 end
 ```
 ### Key Features of MobileNet v1:
-1. **Depthwise Separable Convolutions**: The core idea is to decompose a standard convolution into two simpler operations:
-   - **Depthwise Convolution**: Each input channel is convolved independently.
-   - **Pointwise Convolution**: A 1x1 convolution is applied to combine the depthwise-convoluted outputs.
-   
-   This reduces both the computational complexity and the number of parameters compared to traditional convolutions.
-   
-2. **Width Multiplier (α)**: This hyperparameter reduces the number of channels in each layer by multiplying by a constant, further reducing the size of the model.
+* Depthwise Separable Convolutions: Standard convolutions are split into two parts:
+    * Depthwise Convolutions: Applies a filter to each input channel individually.
+    * Pointwise Convolutions: A 1x1 convolution combines the outputs of the depthwise layers. 
+    This drastically reduces the number of parameters and computations required for each layer.
+* Width Multiplier (α): This allows you to adjust the number of filters (channels) in each layer, enabling you to scale the model for different use cases, from mobile to more compute-heavy environments.
 
-3. **Resolution Multiplier (ρ)**: This factor allows controlling the input image resolution, reducing computational complexity by shrinking the spatial resolution of the input images.
+* Resolution Multiplier (ρ): This helps control the resolution of the input image, allowing you to fine-tune the trade-off between speed and accuracy by shrinking or expanding the input size.
 
-Overall, MobileNet v1 strikes a balance between accuracy and efficiency, making it a powerful model for real-time applications on devices with limited computing power.
+MobileNet v1's balance between performance and efficiency makes it ideal for real-time applications on resource-constrained devices, such as smart phones.
 
 # Training
-
-MobileNet v1 was trained for 11 uninterrupted hours on an NVIDIA GeForce RTX 3050 Ti CUDA-enabled GPU with 32 GB of available memory.
+The model was trained on the CIFAR100 dataset, which contains 60,000 images distributed across 100 classes. Training took place over 11 hours on an NVIDIA GeForce RTX 3050 Ti with CUDA enabled and 32 GB of available memory.
+The following graphs show the performance of the model during training:
 
 ## Validation Accuracy:
 ![Training and Validation Accuracy](https://github.com/user-attachments/assets/f2d35b0c-5a62-4220-af94-dadf46223cac)
